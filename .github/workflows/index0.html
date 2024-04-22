@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Time Display</title>
+    <style>
+      body {
+        background-color: white; /* 배경을 하얀색으로 설정 */
+        color: black; /* 텍스트 색상을 검은색으로 설정 */
+        font-family: Arial, sans-serif; /* 폰트 스타일을 지정 */
+      }
+      #time {
+        font-size: 24px; /* 시간 표시 크기를 조정 */
+        text-align: center; /* 시간 표시를 중앙 정렬 */
+        margin-top: 20%; /* 상단 여백을 줘서 시간 표시를 화면 중간으로 이동 */
+      }
+      button {
+        display: block; /* 버튼을 블록 요소로 설정 */
+        width: 200px; /* 버튼 너비 설정 */
+        margin: 20px auto; /* 버튼을 중앙에 배치하고 위아래 여백 지정 */
+        padding: 10px; /* 버튼 내부 여백 지정 */
+        background-color: #eee; /* 버튼 배경색을 연한 회색으로 설정 */
+        color: black; /* 버튼 텍스트 색상을 검은색으로 설정 */
+        border: none; /* 테두리 제거 */
+        font-size: 16px; /* 텍스트 크기 설정 */
+        cursor: pointer; /* 마우스 오버시 커서 변경 */
+      }
+      button:hover {
+        background-color: #ccc; /* 마우스 오버시 버튼 색상을 조금 더 어두운 회색으로 변경 */
+      }
+    </style>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        document.getElementById("time").innerText =
+          now.toLocaleTimeString("ko-KR");
+      }
+
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        setInterval(updateTime, 1000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="time"></div>
+    <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
+  </body>
+</html>
